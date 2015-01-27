@@ -1,0 +1,96 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{HW6 benchmark}
+-->
+
+HW6 benchmark
+========================================================
+
+This vignette benchmarks package functions
+
+Let's load the packages
+
+```{r}
+library(HW6) #our library
+library(microbenchmark) #benchmarking
+library(combinat) #permutation generation
+
+```
+
+
+Exercise 06.01 (mode)
+-------------------------------------------------------
+
+Let's first create R solution:
+
+```{r}
+Rmode=function(x)
+{
+  m=table(x)
+  as.integer(names(which.max(m)))
+}
+
+```
+
+Now, let's benchmark it against our solution:
+
+```{r}
+
+x=sample(100, replace=TRUE, 100)
+microbenchmark (mode(x), Rmode(x))
+
+x=sample(100, replace=TRUE, 1000)
+microbenchmark (mode(x), Rmode(x))
+
+x=sample(100, replace=TRUE, 10000)
+microbenchmark (mode(x), Rmode(x))
+
+```
+
+
+
+Exercise 06.02 (simplify2array)
+-------------------------------------------------------
+
+```{r}
+
+x=lapply(rep(100, 10), sample)
+microbenchmark (base::simplify2array(x), HW6::simplify2array(x))
+
+x=lapply(rep(100, 100), sample)
+microbenchmark (base::simplify2array(x), HW6::simplify2array(x))
+
+x=lapply(rep(100, 1000), sample)
+microbenchmark (base::simplify2array(x), HW6::simplify2array(x))
+
+
+```
+
+
+Exercise 06.03 (perms)
+-------------------------------------------------------
+
+Let's first wrap the combinat::permn so that it has similiar interface
+
+```{r}
+Rperms=function(x)
+{
+  combinat::permn(1:x)
+}
+
+```
+
+And now let's benchmark it:
+
+```{r}
+
+x=3
+microbenchmark (Rperms(x), HW6::perms)
+
+x=5
+microbenchmark (Rperms(x), HW6::perms)
+
+x=6
+microbenchmark (Rperms(x), HW6::perms)
+
+```

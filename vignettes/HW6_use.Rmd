@@ -1,0 +1,64 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{HW6 use}
+-->
+
+HW6 use
+========================================================
+
+This vignette shows how to use the package.
+
+First load the package
+
+```{r}
+library(HW6)
+```
+
+
+Three exercises were solved.
+
+Exercise 06.01
+-------------------------------------------------------
+
+mode - call it with integer vectors
+
+
+```{r}
+mode(c(1,2,3,1))
+
+```
+
+
+Exercise 06.02
+-------------------------------------------------------
+
+simplify2array - call it with list of numeric vectors
+
+```{r}
+simplify2array(list(c(1,2,3), c(4,5,6)))
+
+```
+
+If called with just one element in the list it will return a vector
+
+```{r}
+simplify2array(list(c(1,2,3,4,5,6)))
+
+```
+
+And if the numeric vectors have diffrent sizes you will get a list
+
+```{r}
+simplify2array(list(c(1,2,3), c(1,2,3,4)))
+
+```
+
+Exercise 06.03
+-------------------------------------------------------
+
+perms - call it with integer
+
+```{r}
+perms(3)
+
+```

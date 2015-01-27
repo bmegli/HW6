@@ -1,0 +1,16 @@
+Package: HW6
+Type: Package
+Title: Homework for the Advanced R course
+Version: 1.0
+Date: 2015-01-26
+Author: Bartosz Meglicki
+Maintainer: Bartosz Meglicki <b.meglicki@phd.ipipan.waw.pl>
+Description: Just a bunch of silly functions in served on silver package plate
+License: GPL (>= 2)
+Imports: Rcpp (>= 0.11.3)
+LinkingTo: Rcpp
+VignetteBuilder: knitr
+Suggests: testthat,
+          knitr,
+          microbenchmark,
+          combinat
